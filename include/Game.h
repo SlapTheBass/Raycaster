@@ -1,0 +1,45 @@
+#include <SFML/Graphics.hpp>
+#include "Player.h"
+#include "Level.h"
+#include "TextureManager.h"
+#include "SoundManager.h"
+
+#pragma once
+
+namespace game
+{
+	typedef enum E_GameState
+	{
+		eOnInit = 0,
+		eMenu,
+		eRun,
+		eClose
+	};
+
+	typedef enum E_Menu
+	{
+		eStart = 0,
+		eSettings,
+		eSave,
+		eLoad,
+		eQuit
+	};
+}
+
+class Game
+{
+public:
+	Game();
+	~Game();
+
+	void Init();
+	void Run();
+	void Close();
+	void Update();
+
+private:
+	sf::RenderWindow* _mainWindow;
+	Player* _player;
+	Level _level;
+};
+
