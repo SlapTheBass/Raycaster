@@ -21,11 +21,27 @@ void Player::Rotate()
 	switch (_input.pressedKey())
 	{
 	case eLEFT:
-		_helper._line->setRotation(_helper._angle--);
+		_helper._line->setRotation(_helper._angle = _helper._angle - 0.1f);
+		if (_helper._angle >= 360)
+		{
+			_helper._angle = 0;
+		}
+		else if (_helper._angle <= 0)
+		{
+			_helper._angle = 360;
+		}
 		break;
 
 	case eRIGHT:
-		_helper._line->setRotation(_helper._angle++);
+		_helper._line->setRotation(_helper._angle = _helper._angle + 0.1f);
+		if (_helper._angle >= 360)
+		{
+			_helper._angle = 0;
+		}
+		else if (_helper._angle <= 0)
+		{
+			_helper._angle = 360;
+		}
 		break;
 
 	default:
@@ -38,11 +54,24 @@ void Player::Move()
 	switch (_input.pressedKey())
 	{
 	case eUP:
-		_helper._shape->setPosition(_helper._shape->getPosition().x + sin(_helper._angle), _helper._shape->getPosition().y + cos(_helper._angle));
-		_helper._line->setPosition(_helper._line->getPosition().x + sin(_helper._angle), _helper._line->getPosition().y + cos(_helper._angle));
+		if (_helper._angle >= 270 && _helper._angle < 360) //First quarter
+		{
+			_helper._shape->setPosition(_helper._shape->getPosition().x + (sin(_helper._angle) * 0.1f), _helper._shape->getPosition().y + (cos(_helper._angle) * 0.1f));
+		    _helper._line->setPosition(_helper._line->getPosition().x + (sin(_helper._angle) * 0.1f), _helper._line->getPosition().y + (cos(_helper._angle) * 0.1f));
+		}
+		else if (_helper._angle >= 90 && _helper._angle < 180) //Second qurter
+		{
+			/*_helper._shape->setPosition(_helper._shape->getPosition().x + (sin(_helper._angle) * 0.2f), _helper._shape->getPosition().y + (cos(_helper._angle) * 0.2f));
+			_helper._line->setPosition(_helper._line->getPosition().x + (sin(_helper._angle) * 0.2f), _helper._line->getPosition().y + (cos(_helper._angle) * 0.2f));*/
+		}
 		break;
 
 	case eDOWN:
+		if (_helper._angle >= 0 && _helper._angle <= 90)
+		{
+			_helper._shape->setPosition(_helper._shape->getPosition().x - (sin(_helper._angle) * 0.2f), _helper._shape->getPosition().y - (cos(_helper._angle) * 0.2f));
+			_helper._line->setPosition(_helper._line->getPosition().x - (sin(_helper._angle) * 0.2f), _helper._line->getPosition().y - (cos(_helper._angle) * 0.2f));
+		}
 
 		break;
 
