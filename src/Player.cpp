@@ -54,25 +54,13 @@ void Player::Move()
 	switch (_input.pressedKey())
 	{
 	case eUP:
-		if (_helper._angle >= 270 && _helper._angle < 360) //First quarter
-		{
-			_helper._shape->setPosition(_helper._shape->getPosition().x + (sin(_helper._angle) * 0.1f), _helper._shape->getPosition().y + (cos(_helper._angle) * 0.1f));
-		    _helper._line->setPosition(_helper._line->getPosition().x + (sin(_helper._angle) * 0.1f), _helper._line->getPosition().y + (cos(_helper._angle) * 0.1f));
-		}
-		else if (_helper._angle >= 90 && _helper._angle < 180) //Second qurter
-		{
-			/*_helper._shape->setPosition(_helper._shape->getPosition().x + (sin(_helper._angle) * 0.2f), _helper._shape->getPosition().y + (cos(_helper._angle) * 0.2f));
-			_helper._line->setPosition(_helper._line->getPosition().x + (sin(_helper._angle) * 0.2f), _helper._line->getPosition().y + (cos(_helper._angle) * 0.2f));*/
-		}
+		_helper._shape->setPosition(_helper._shape->getPosition().x - (sin(_helper._angle * PI / 180) * 0.1f), _helper._shape->getPosition().y + (cos(_helper._angle * PI / 180) * 0.1f));
+		_helper._line->setPosition(_helper._line->getPosition().x - (sin(_helper._angle * PI / 180) * 0.1f), _helper._line->getPosition().y + (cos(_helper._angle * PI / 180) * 0.1f));
 		break;
 
 	case eDOWN:
-		if (_helper._angle >= 0 && _helper._angle <= 90)
-		{
-			_helper._shape->setPosition(_helper._shape->getPosition().x - (sin(_helper._angle) * 0.2f), _helper._shape->getPosition().y - (cos(_helper._angle) * 0.2f));
-			_helper._line->setPosition(_helper._line->getPosition().x - (sin(_helper._angle) * 0.2f), _helper._line->getPosition().y - (cos(_helper._angle) * 0.2f));
-		}
-
+		_helper._shape->setPosition(_helper._shape->getPosition().x + (sin(_helper._angle * PI / 180) * 0.1f), _helper._shape->getPosition().y - (cos(_helper._angle * PI / 180) * 0.1f));
+		_helper._line->setPosition(_helper._line->getPosition().x + (sin(_helper._angle * PI / 180) * 0.1f), _helper._line->getPosition().y - (cos(_helper._angle * PI / 180) * 0.1f));
 		break;
 
 	default:
