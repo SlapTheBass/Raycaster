@@ -17,6 +17,8 @@ void Game::Run()
                 _mainWindow->close();
         }
 
+        _player->Update();
+
         _mainWindow->clear();
         _player->Draw(_mainWindow);
         _mainWindow->display();

@@ -2,7 +2,8 @@
 
 typedef enum E_keys
 {
-	eSpace = 0,
+	eNONE = 0,
+	eSPACE,
 	eUP,
 	eDOWN,
 	eLEFT,

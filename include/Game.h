@@ -3,6 +3,7 @@
 #include "Level.h"
 #include "TextureManager.h"
 #include "SoundManager.h"
+#include "Utilities.h"
 
 #pragma once
 
