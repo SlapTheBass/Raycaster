@@ -3,7 +3,25 @@
 Game::Game()
 {
 	_mainWindow = new sf::RenderWindow(sf::VideoMode(640, 480), "Raycaster");
+    _mainWindow->setKeyRepeatEnabled(true);
     _player = new Player();
+}
+
+Game::~Game()
+{
+
+}
+
+void Game::Update()
+{
+    _player->Update();
+}
+
+void Game::Draw()
+{
+    _mainWindow->clear();
+    _player->Draw(_mainWindow);
+    _mainWindow->display();
 }
 
 void Game::Run()
@@ -17,10 +35,8 @@ void Game::Run()
                 _mainWindow->close();
         }
 
-        _player->Update();
+        Update();
 
-        _mainWindow->clear();
-        _player->Draw(_mainWindow);
-        _mainWindow->display();
+        Draw();
     }
 }

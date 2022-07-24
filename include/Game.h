@@ -36,11 +36,13 @@ public:
 	void Init();
 	void Run();
 	void Close();
-	void Update();
 
 private:
 	sf::RenderWindow* _mainWindow;
 	Player* _player;
 	Level _level;
+
+	void Update();
+	void Draw();
 };
 
