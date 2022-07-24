@@ -1,8 +1,7 @@
+#pragma once
+
 #include <SFML/Graphics.hpp>
 #include "Input.h"
-#include <iostream>
-
-#pragma once
 
 #define PI 3.14159265359
 

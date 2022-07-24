@@ -1,11 +1,11 @@
+#pragma once
+
 #include <SFML/Graphics.hpp>
 #include "Player.h"
 #include "Level.h"
 #include "TextureManager.h"
 #include "SoundManager.h"
 #include "Utilities.h"
-
-#pragma once
 
 namespace game
 {
