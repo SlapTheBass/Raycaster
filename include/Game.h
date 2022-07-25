@@ -40,7 +40,7 @@ public:
 private:
 	sf::RenderWindow* _mainWindow;
 	Player* _player;
-	Level _level;
+	Level* _level;
 
 	void Update();
 	void Draw();
