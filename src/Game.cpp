@@ -6,6 +6,8 @@ Game::Game()
     _mainWindow->setKeyRepeatEnabled(true);
     _player = new Player();
     _level = new Level();
+
+    _camera.setSize(sf::Vector2f(_mainWindow->getSize()));
 }
 
 Game::~Game()
@@ -16,10 +18,12 @@ Game::~Game()
 void Game::Update()
 {
     _player->Update();
+    _camera.setCenter(_player->GetPosition());
 }
 
 void Game::Draw()
 {
+    _mainWindow->setView(_camera);
     _mainWindow->clear();
     _level->Draw(_mainWindow);
     _player->Draw(_mainWindow);

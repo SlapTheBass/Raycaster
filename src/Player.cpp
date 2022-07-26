@@ -121,3 +121,8 @@ void Player::Draw(sf::RenderWindow* window)
 	window->draw(*_helper._shape);
 	window->draw(*_helper._line);
 }
+
+sf::Vector2f Player::GetPosition()
+{
+	return sf::Vector2f(_helper._shape->getPosition().x + _radius, _helper._shape->getPosition().y - _radius);
+}

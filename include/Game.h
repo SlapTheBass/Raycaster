@@ -39,6 +39,7 @@ public:
 
 private:
 	sf::RenderWindow* _mainWindow;
+	sf::View _camera;
 	Player* _player;
 	Level* _level;
 
