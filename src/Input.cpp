@@ -14,33 +14,11 @@ E_keys Input::pressedKey()
 {
 	if (_keyboard.isKeyPressed(sf::Keyboard::W) || _keyboard.isKeyPressed(sf::Keyboard::Up))
 	{
-		if (_keyboard.isKeyPressed(sf::Keyboard::Left))
-		{
-			_keyHandler = eUP_LEFT;
-		}
-		else if (_keyboard.isKeyPressed(sf::Keyboard::Right))
-		{
-			_keyHandler = eUP_RIGHT;
-		}
-		else
-		{
-			_keyHandler = eUP;
-		}
+		_keyHandler = eUP;
 	}
 	else if (_keyboard.isKeyPressed(sf::Keyboard::S) || _keyboard.isKeyPressed(sf::Keyboard::Down))
 	{
-		if (_keyboard.isKeyPressed(sf::Keyboard::Left))
-		{
-			_keyHandler = eDOWN_LEFT;
-		}
-		else if (_keyboard.isKeyPressed(sf::Keyboard::Right))
-		{
-			_keyHandler = eDOWN_RIGHT;
-		}
-		else
-		{
-			_keyHandler = eDOWN;
-		}
+		_keyHandler = eDOWN;
 	}
 	else if (_keyboard.isKeyPressed(sf::Keyboard::A))
 	{
@@ -49,14 +27,6 @@ E_keys Input::pressedKey()
 	else if (_keyboard.isKeyPressed(sf::Keyboard::D))
 	{
 		_keyHandler = eRIGHT;
-	}
-	else if (_keyboard.isKeyPressed(sf::Keyboard::Left))
-	{
-		_keyHandler = eROT_LEFT;
-	}
-	else if (_keyboard.isKeyPressed(sf::Keyboard::Right))
-	{
-		_keyHandler = eROT_RIGHT;
 	}
 	else if (_keyboard.isKeyPressed(sf::Keyboard::LShift) || _keyboard.isKeyPressed(sf::Keyboard::RShift))
 	{

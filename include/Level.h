@@ -5,7 +5,7 @@
 struct floorHelper
 {
 	float thickness = 1.0f;
-	float length = 1024.0f;
+	float length = 1200.0f;
 	
 	std::vector<std::shared_ptr<sf::RectangleShape>> verticalLines;
 	std::vector<std::shared_ptr<sf::RectangleShape>> horizontalLines;

@@ -2,7 +2,7 @@
 
 Player::Player()
 {
-	helperInit(&_helper);
+	helperInit(&_helper);	
 }
 
 Player::~Player()
@@ -22,40 +22,48 @@ void Player::helperInit(playerHelper* ptrHelper)
 	ptrHelper->_line->setFillColor(sf::Color::White);
 }
 
-void Player::RotateLeft()
+void Player::Rotate()
 {
-	_helper._angle = _helper._angle - _rotVelocity;
-	_helper._line->setRotation(_helper._angle);
-}
+	float tempAngle = sf::Mouse::getPosition().x * _rotVelocity;
 
-void Player::RotateRight()
-{
-	_helper._angle = _helper._angle + _rotVelocity;
+	_helper._angle = tempAngle;
 	_helper._line->setRotation(_helper._angle);
 }
 
 void Player::Forward()
 {
-	_helper._shape->setPosition(_helper._shape->getPosition().x - (sin(_helper._angle * PI / 180) * _velocity), _helper._shape->getPosition().y + (cos(_helper._angle * PI / 180) * _velocity));
-	_helper._line->setPosition(_helper._line->getPosition().x - (sin(_helper._angle * PI / 180) * _velocity), _helper._line->getPosition().y + (cos(_helper._angle * PI / 180) * _velocity));
+	_helper._shape->setPosition(_helper._shape->getPosition().x - (sin(_helper._angle * PI / 180) * _velocity),
+		                        _helper._shape->getPosition().y + (cos(_helper._angle * PI / 180) * _velocity));
+
+	_helper._line->setPosition(_helper._line->getPosition().x - (sin(_helper._angle * PI / 180) * _velocity),
+		                       _helper._line->getPosition().y + (cos(_helper._angle * PI / 180) * _velocity));
 }
 
 void Player::Backward()
 {
-	_helper._shape->setPosition(_helper._shape->getPosition().x + (sin(_helper._angle * PI / 180) * _velocity), _helper._shape->getPosition().y - (cos(_helper._angle * PI / 180) * _velocity));
-	_helper._line->setPosition(_helper._line->getPosition().x + (sin(_helper._angle * PI / 180) * _velocity), _helper._line->getPosition().y - (cos(_helper._angle * PI / 180) * _velocity));
+	_helper._shape->setPosition(_helper._shape->getPosition().x + (sin(_helper._angle * PI / 180) * _velocity),
+		                        _helper._shape->getPosition().y - (cos(_helper._angle * PI / 180) * _velocity));
+
+	_helper._line->setPosition(_helper._line->getPosition().x + (sin(_helper._angle * PI / 180) * _velocity),
+		                       _helper._line->getPosition().y - (cos(_helper._angle * PI / 180) * _velocity));
 }
 
 void Player::Left()
 {
-	_helper._shape->setPosition(_helper._shape->getPosition().x + (cos(_helper._angle * PI / 180) * _velocity), _helper._shape->getPosition().y + (sin(_helper._angle * PI / 180) * _velocity));
-	_helper._line->setPosition(_helper._line->getPosition().x + (cos(_helper._angle * PI / 180) * _velocity), _helper._line->getPosition().y + (sin(_helper._angle * PI / 180) * _velocity));
+	_helper._shape->setPosition(_helper._shape->getPosition().x + (cos(_helper._angle * PI / 180) * _velocity),
+		                        _helper._shape->getPosition().y - (sin(_helper._angle * PI / 180) * _velocity));
+
+	_helper._line->setPosition(_helper._line->getPosition().x + (cos(_helper._angle * PI / 180) * _velocity),
+		                       _helper._line->getPosition().y - (sin(_helper._angle * PI / 180) * _velocity));
 }
 
 void Player::Right()
 {
-	_helper._shape->setPosition(_helper._shape->getPosition().x - (cos(_helper._angle * PI / 180) * _velocity), _helper._shape->getPosition().y - (sin(_helper._angle * PI / 180) * _velocity));
-	_helper._line->setPosition(_helper._line->getPosition().x - (cos(_helper._angle * PI / 180) * _velocity), _helper._line->getPosition().y - (sin(_helper._angle * PI / 180) * _velocity));
+	_helper._shape->setPosition(_helper._shape->getPosition().x - (cos(_helper._angle * PI / 180) * _velocity),
+		                        _helper._shape->getPosition().y + (sin(_helper._angle * PI / 180) * _velocity));
+
+	_helper._line->setPosition(_helper._line->getPosition().x - (cos(_helper._angle * PI / 180) * _velocity),
+		                       _helper._line->getPosition().y + (sin(_helper._angle * PI / 180) * _velocity));
 }
 
 void Player::Move()
@@ -63,50 +71,27 @@ void Player::Move()
 	switch (_input.pressedKey())
 	{
 	case eUP:
-		Forward();
-		break;
-
-	case eUP_LEFT:
-		RotateLeft();
-		Forward();
-		break;
-
-	case eUP_RIGHT:
-		RotateRight();
+		Rotate();
 		Forward();
 		break;
 
 	case eDOWN:
+		Rotate();
 		Backward();
-		break;
-
-	case eDOWN_LEFT:
-		RotateLeft();
-		Backward();
-		break;
-
-	case eDOWN_RIGHT:
-		RotateRight();
-		Backward();
-		break;
-
-	case eROT_LEFT:
-		RotateLeft();
-		break;
-
-	case eROT_RIGHT:
-		RotateRight();
 		break;
 
 	case eLEFT:
+		Rotate();
 		Left();
 		break;
 
 	case eRIGHT:
+		Rotate();
 		Right();
 		break;
 
 	default:
+		Rotate();
 		break;
 	}
 }

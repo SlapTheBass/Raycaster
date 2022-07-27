@@ -12,7 +12,7 @@ Level::~Level()
 
 void Level::Init()
 {
-	for (int i = 0; i < 60; ++i)
+	for (int i = 0; i <= 60; ++i)
 	{
 		std::shared_ptr<sf::RectangleShape> line = std::make_shared<sf::RectangleShape>(sf::Vector2f(_helper.thickness, _helper.length));
 		line->setFillColor(sf::Color(14,128,11));
@@ -20,7 +20,7 @@ void Level::Init()
 		_helper.verticalLines.push_back(line);
 	}
 
-	for (int i = 0; i < 60; ++i)
+	for (int i = 0; i <= 60; ++i)
 	{
 		std::shared_ptr<sf::RectangleShape> line = std::make_shared<sf::RectangleShape>(sf::Vector2f(_helper.thickness, _helper.length));
 		line->setFillColor(sf::Color(14, 128, 11));

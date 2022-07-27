@@ -1,6 +1,8 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
+
 #include "Input.h"
 
 #define PI 3.14159265359
@@ -32,11 +34,10 @@ private:
 	float _radius = 10.f;
 	float _rayLength = 25.f;
 	float _thickness = 2.f;
-	float _velocity = 0.3f;
-	float _rotVelocity = 0.3f;
+	float _velocity = 0.4f;
+	float _rotVelocity = 0.4f;
 
-	void RotateLeft();
-	void RotateRight();
+	void Rotate();
 
 	void Forward();
 	void Backward();
