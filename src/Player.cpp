@@ -24,7 +24,12 @@ void Player::helperInit(playerHelper* ptrHelper)
 
 void Player::Rotate()
 {
-	float tempAngle = sf::Mouse::getPosition().x * _rotVelocity;
+	float tempAngle = sf::Mouse::getPosition().x;
+
+	if (tempAngle >= 1080)
+		tempAngle = 0;
+	else if (tempAngle <= 0)
+		tempAngle = 1080;
 
 	_helper._angle = tempAngle;
 	_helper._line->setRotation(_helper._angle);
