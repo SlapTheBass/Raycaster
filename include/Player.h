@@ -34,7 +34,7 @@ private:
 	float _radius = 10.f;
 	float _rayLength = 25.f;
 	float _thickness = 2.f;
-	float _velocity = 0.4f;
+	float _velocity = 0.8f;
 	float _rotVelocity = 0.4f;
 
 	void Rotate();

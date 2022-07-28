@@ -24,14 +24,20 @@ void Player::helperInit(playerHelper* ptrHelper)
 
 void Player::Rotate()
 {
-	float tempAngle = sf::Mouse::getPosition().x;
+	if (sf::Mouse::getPosition().x >= sf::VideoMode::getDesktopMode().width - 1)
+	{
+		sf::Mouse::setPosition(sf::Vector2i(0, sf::Mouse::getPosition().y));
+	}
+	else if (sf::Mouse::getPosition().x <= 0)
+	{
+		sf::Mouse::setPosition(sf::Vector2i(sf::VideoMode::getDesktopMode().width, sf::Mouse::getPosition().y));
+	}
 
-	if (tempAngle >= 1080)
-		tempAngle = 0;
-	else if (tempAngle <= 0)
-		tempAngle = 1080;
+	float tempAngle = sf::Mouse::getPosition().x * _rotVelocity;
 
 	_helper._angle = tempAngle;
+
+	std::cout << _helper._angle << std::endl;
 	_helper._line->setRotation(_helper._angle);
 }
 
@@ -56,19 +62,19 @@ void Player::Backward()
 void Player::Left()
 {
 	_helper._shape->setPosition(_helper._shape->getPosition().x + (cos(_helper._angle * PI / 180) * _velocity),
-		                        _helper._shape->getPosition().y - (sin(_helper._angle * PI / 180) * _velocity));
+		                        _helper._shape->getPosition().y + (sin(_helper._angle * PI / 180) * _velocity));
 
 	_helper._line->setPosition(_helper._line->getPosition().x + (cos(_helper._angle * PI / 180) * _velocity),
-		                       _helper._line->getPosition().y - (sin(_helper._angle * PI / 180) * _velocity));
+		                       _helper._line->getPosition().y + (sin(_helper._angle * PI / 180) * _velocity));
 }
 
 void Player::Right()
 {
 	_helper._shape->setPosition(_helper._shape->getPosition().x - (cos(_helper._angle * PI / 180) * _velocity),
-		                        _helper._shape->getPosition().y + (sin(_helper._angle * PI / 180) * _velocity));
+		                        _helper._shape->getPosition().y - (sin(_helper._angle * PI / 180) * _velocity));
 
 	_helper._line->setPosition(_helper._line->getPosition().x - (cos(_helper._angle * PI / 180) * _velocity),
-		                       _helper._line->getPosition().y + (sin(_helper._angle * PI / 180) * _velocity));
+		                       _helper._line->getPosition().y - (sin(_helper._angle * PI / 180) * _velocity));
 }
 
 void Player::Move()
