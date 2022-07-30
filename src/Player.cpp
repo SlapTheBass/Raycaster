@@ -37,7 +37,8 @@ void Player::Rotate()
 
 	_helper._angle = tempAngle;
 
-	std::cout << _helper._angle << std::endl;
+	DBG_MSG(_helper._angle);
+
 	_helper._line->setRotation(_helper._angle);
 }
 
